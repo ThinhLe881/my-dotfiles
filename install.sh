@@ -1,13 +1,13 @@
 #!/bin/bash
 
 cd ~
+sudo apt update
 
 # check if zsh is installed
 if command -v zsh >/dev/null 2>&1; then
 	echo "Zsh is already installed."
 else
 	echo "Zsh is not installed. Installing now..."
-	sudo apt update
 	sudo apt install -y zsh
 fi
 
@@ -47,6 +47,13 @@ if [ ! -d "$PLUGIN_DIR" ]; then
 else
         cd "$PLUGIN_DIR" && git pull && cd ~ 
 fi
+
+# Check if stow is installed
+if command -v stow >/dev/null 2>&1; then
+	echo "GNU Stow is already installed."
+else
+	echo "GNU Stow is not installed. Installing now..."
+	sudo apt install -y stow
 
 # stow dotfiles
 echo "Stow dotfiles..."

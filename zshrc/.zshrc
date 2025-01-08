@@ -3,7 +3,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # config non-zsh plugins
 source ~/.zshenv
-source ~/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # add this to solve warnings from zsh-syntax-highlighting plugin
 zle -N menu-search

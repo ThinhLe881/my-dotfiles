@@ -52,6 +52,19 @@ update_plugin https://github.com/zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM
 echo "Updating zsh-syntax-highlighting..."
 update_plugin https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
 
+# install zsh-history-substring-search
+echo "Updating zsh-history-substring-search"
+update_plugin https://github.com/zsh-users/zsh-history-substring-search.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search"
+
+# install fzf
+if command -v fzf >/dev/null 2>&1; then
+  	echo "fzf is already installed."
+else
+	echo "fzf is not installed. Installing now..."
+	git clone --depth 1 -- https://github.com/junegunn/fzf.git ~/.fzf
+	"$HOME/.fzf/install"
+fi
+
 # Check if stow is installed
 if command -v stow >/dev/null 2>&1; then
 	echo "GNU Stow is already installed."

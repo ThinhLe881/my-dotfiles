@@ -1,6 +1,26 @@
 #!/bin/bash
 
-cd ~
+# function to check if plugin exists and update
+update_plugin() {
+	local plugin_url="$1"
+	local plugin_dir="$2"
+	if [ ! -d "$plugin_dir" ]; then
+        	git clone --depth 1 -- "$plugin_url" "$plugin_dir"                                                 
+	else
+		cd "$plugin_dir" && git pull && cd "$HOME"
+	fi
+}
+
+# function to remove a file if it's a regular file and not a symlink
+remove_file_if_exists() {
+	local file="$1"
+	if [ -f "$file" ] && [ ! -L "$file" ]; then
+	  	echo "Removing $file..."
+	  	rm "$file"
+  	fi
+}
+
+cd "$HOME"
 
 # check if zsh is installed
 if command -v zsh >/dev/null 2>&1; then
@@ -22,30 +42,15 @@ curl -sS https://starship.rs/install.sh | sh
 
 # install autocomplete plugin
 echo "Updating zsh-autocomplete..."
-PLUGIN_DIR=~/zsh-autocomplete
-if [ ! -d "$PLUGIN_DIR" ]; then
-	git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git
-else
-	cd "$PLUGIN_DIR" && git pull && cd ~
-fi
+update_plugin https://github.com/marlonrichert/zsh-autocomplete.git "$HOME/zsh-autocomplete"
 
 # install autosuggestions plugin
 echo "Updating zsh-autosuggestions..."
-PLUGIN_DIR="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-if [ ! -d "$PLUGIN_DIR" ]; then
-	git clone https://github.com/zsh-users/zsh-autosuggestions "$PLUGIN_DIR"
-else
-        cd "$PLUGIN_DIR" && git pull && cd ~ 
-fi
+update_plugin https://github.com/zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
 
 # install zsh-syntax-highlighting
 echo "Updating zsh-syntax-highlighting..."
-PLUGIN_DIR="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
-if [ ! -d "$PLUGIN_DIR" ]; then
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$PLUGIN_DIR"                                                 
-else
-        cd "$PLUGIN_DIR" && git pull && cd ~ 
-fi
+update_plugin https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
 
 # Check if stow is installed
 if command -v stow >/dev/null 2>&1; then
@@ -57,11 +62,13 @@ fi
 
 # stow dotfiles
 echo "Stow dotfiles..."
-cd ~/my-dotfiles/
+remove_file_if_exists "$HOME/.zshrc"
+remove_file_if_exists "$HOME/.config/starship.toml"
+cd "$HOME/my-dotfiles/"
 stow zshrc
 stow starship
 
 # restart zsh
 echo "Restart zsh..."
-source ~/.zshrc
+source "$HOME/.zshrc"
 exec zsh

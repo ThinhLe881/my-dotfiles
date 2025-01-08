@@ -1,7 +1,6 @@
 #!/bin/bash
 
 cd ~
-sudo apt update
 
 # check if zsh is installed
 if command -v zsh >/dev/null 2>&1; then
@@ -54,6 +53,7 @@ if command -v stow >/dev/null 2>&1; then
 else
 	echo "GNU Stow is not installed. Installing now..."
 	sudo apt install -y stow
+fi
 
 # stow dotfiles
 echo "Stow dotfiles..."

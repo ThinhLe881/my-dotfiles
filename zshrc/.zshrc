@@ -1,10 +1,6 @@
 # path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# config non-zsh plugins
-source ~/.zshenv
-source ~/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
 # add this to solve warnings from zsh-syntax-highlighting plugin
 zle -N menu-search
 zle -N recent-paths
@@ -12,6 +8,14 @@ zle -N recent-paths
 # config zsh plugins
 plugins=(git vscode tmux z zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
+
+# completion
+autoload -Uz compinit
+if [[ -n $HOME/.cache/zsh/zcompdump-$ZSH_VERSION ]]; then
+	compinit -d "$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
+else
+	compinit -C
+fi
 
 # config key bindings
 bindkey              '^I' menu-select

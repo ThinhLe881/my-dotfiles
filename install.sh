@@ -40,10 +40,6 @@ fi
 echo "Updating Starship..."
 curl -sS https://starship.rs/install.sh | sh
 
-# install autocomplete plugin
-echo "Updating zsh-autocomplete..."
-update_plugin https://github.com/marlonrichert/zsh-autocomplete.git "$HOME/zsh-autocomplete"
-
 # install autosuggestions plugin
 echo "Updating zsh-autosuggestions..."
 update_plugin https://github.com/zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"

@@ -36,6 +36,14 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
+# install homebrew
+if command -v brew >/dev/null 2>&1; then
+	echo "Homebrew is already installed."
+else
+	echo "Homebrew is not installed. Installing now..."
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
 # install starship
 echo "Updating Starship..."
 curl -sS https://starship.rs/install.sh | sh

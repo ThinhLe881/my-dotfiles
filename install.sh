@@ -48,6 +48,18 @@ fi
 echo "Updating Starship..."
 curl -sS https://starship.rs/install.sh | sh
 
+# install tmux
+if command -v tmux &> /dev/null; then
+	echo "Tmux is already installed."
+else
+	echo "Tmux is not installed. Installing now..."
+	sudo apt-get install -y tmux
+fi
+
+# install tmux-plugins/tpm
+echo "Updating tmux-plugins/tpm"
+update_plugin git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+
 # install autosuggestions plugin
 echo "Updating zsh-autosuggestions..."
 update_plugin https://github.com/zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
@@ -58,14 +70,14 @@ update_plugin https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CU
 
 # install zsh-history-substring-search
 echo "Updating zsh-history-substring-search"
-update_plugin https://github.com/zsh-users/zsh-history-substring-search.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search"
+update_plugin https://github.com/zsh-users/zsh-history-substring-search.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-history-substring-search"
 
 # install fzf
 if command -v fzf >/dev/null 2>&1; then
   	echo "fzf is already installed."
 else
 	echo "fzf is not installed. Installing now..."
-	git clone --depth 1 -- https://github.com/junegunn/fzf.git ~/.fzf
+	git clone --depth 1 -- https://github.com/junegunn/fzf.git "$HOME/.fzf"
 	"$HOME/.fzf/install"
 fi
 

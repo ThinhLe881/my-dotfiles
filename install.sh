@@ -58,7 +58,7 @@ fi
 
 # install tmux-plugins/tpm
 echo "Updating tmux-plugins/tpm"
-update_plugin git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+update_plugin https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 
 # install autosuggestions plugin
 echo "Updating zsh-autosuggestions..."

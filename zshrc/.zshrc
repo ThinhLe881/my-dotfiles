@@ -1,6 +1,15 @@
 # path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# add the local and homebrew bin folders to $PATH
+export PATH="/home/linuxbrew/.linuxbrew/bin:$HOME/.local/bin:$PATH"
+
+# config python virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=$HOME/.virtualenvs/venv/bin/python
+export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.virtualenvs/venv/bin/virtualenv
+source $HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh
+
 # add this to solve warnings from zsh-syntax-highlighting plugin
 zle -N menu-search
 zle -N recent-paths
@@ -43,3 +52,6 @@ eval "$(starship init zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Created by `pipx` on 2025-01-16 03:08:54
+export PATH="$PATH:/home/thinh/.local/bin"

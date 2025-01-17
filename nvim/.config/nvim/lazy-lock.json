@@ -1,0 +1,6 @@
+{
+  "LazyVim": { "branch": "main", "commit": "b574f01af7ab5eaccdef16db60c1fdd94e8ff12d" },
+  "gruvbox.nvim": { "branch": "main", "commit": "68c3460a5d1d1a362318960035c9f3466d5011f5" },
+  "lazy.nvim": { "branch": "main", "commit": "d8f26efd456190241afd1b0f5235fe6fdba13d4a" },
+  "snacks.nvim": { "branch": "main", "commit": "790447f3ad7e81473915fcd9a4db714ef55380b7" }
+}

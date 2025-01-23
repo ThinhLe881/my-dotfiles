@@ -1,2 +1,3 @@
 require("config.lazy")
-require("vim_set")
+require("set")
+require("keymap")

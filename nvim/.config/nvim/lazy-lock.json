@@ -2,6 +2,8 @@
   "LazyVim": { "branch": "main", "commit": "83bf6360a1f28a3fc1afe31ae300247fc01c7a90" },
   "gruvbox.nvim": { "branch": "main", "commit": "68c3460a5d1d1a362318960035c9f3466d5011f5" },
   "lazy.nvim": { "branch": "main", "commit": "d8f26efd456190241afd1b0f5235fe6fdba13d4a" },
+  "lexima.vim": { "branch": "master", "commit": "f851b232505766aff7bed7d20100ad31c9c0b33b" },
+  "lualine.nvim": { "branch": "master", "commit": "2a5bae925481f999263d6f5ed8361baef8df4f83" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "e6645ecfcba3e064446a6def1c10d788c9873f51" },
   "nui.nvim": { "branch": "main", "commit": "53e907ffe5eedebdca1cd503b00aa8692068ca46" },
   "nvim-treesitter": { "branch": "master", "commit": "51562d44fc6280f92bb9a3d87e7b3cb327377ca5" },

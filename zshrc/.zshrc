@@ -14,6 +14,10 @@ source $HOME/.virtualenvs/venv/bin/virtualenvwrapper.sh
 zle -N menu-search
 zle -N recent-paths
 
+# zsh theme
+DEFAULT_USER=`whoami`
+ZSH_THEME="agnoster"
+
 # config zsh plugins
 plugins=(git vscode tmux z zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
@@ -45,13 +49,7 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-# config Starship
-eval "$(starship init zsh)"
-
 # config fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-# Created by `pipx` on 2025-01-16 03:08:54
-export PATH="$PATH:/home/thinh/.local/bin"

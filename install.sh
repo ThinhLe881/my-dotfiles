@@ -44,10 +44,6 @@ else
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# install starship
-echo "Updating Starship..."
-curl -sS https://starship.rs/install.sh | sh
-
 # install tmux
 if command -v tmux &> /dev/null; then
 	echo "Tmux is already installed."
@@ -95,7 +91,8 @@ remove_file_if_exists "$HOME/.zshrc"
 remove_file_if_exists "$HOME/.config/starship.toml"
 cd "$HOME/my-dotfiles/"
 stow zshrc
-stow starship
+stow tmux
+stow nvim
 
 # restart zsh
 echo "Restart zsh..."

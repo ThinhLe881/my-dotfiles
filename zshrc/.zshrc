@@ -4,6 +4,10 @@ export ZSH="$HOME/.oh-my-zsh"
 # add the local and homebrew bin folders to $PATH
 export PATH="/home/linuxbrew/.linuxbrew/bin:$HOME/.local/bin:$PATH"
 
+# java path
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+export PATH=$JAVA_HOME/bin:$PATH
+
 # config python virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=$HOME/.virtualenvs/venv/bin/python
